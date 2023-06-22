@@ -1,0 +1,102 @@
+.bodybox{
+    min-height: 100vh;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+    display: flex;
+}
+
+.innerContent{
+    display: flex;
+    align-items: center;
+    flex-wrap: nowrap;
+}
+
+.mainContent{
+    margin-top: 70px;
+    text-align: center;
+    align-items: center;
+}
+
+h1{
+    font-size: 40px;
+    margin-bottom: 30px;
+}
+
+.first-box{
+    max-width: 500px;
+    padding: 55px;
+    flex-basis: 50%;
+    flex-grow: 1;
+    background-color: black;
+    border-radius: 4px;
+    border: 1px solid #222222;
+    border-right: 1px solid white;
+    /* border-bottom: 1px solid white; */
+    margin-left: 140px;
+}
+
+.second-box{
+    padding: 50px;
+    flex-basis: 50%;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+    background-color: #0E2954;
+    opacity: 80%;
+    height: 450px;
+    margin-right: 140px;
+}
+
+.input-box{
+    background: transparent;
+    color: white;
+    width: 100%;
+    margin-top: 7px;
+    margin-bottom: 10px;
+    padding: 5px;
+}
+
+.option1{
+    background: transparent;
+    font-weight: 200;
+}
+.alloptions{
+    color: black;
+}
+.sel
+
+.inputcheckbox{
+    margin-top: 10px;
+}
+
+.btn1{
+    margin-top: 15px;
+    font-size: 20px;
+}
+a{
+    text-align: center;
+    justify-content: center;
+}
+.glogin{
+    font-size: 17px;
+    text-align: center;
+    justify-content: center;
+}
+.glogin:hover{
+    text-decoration: underline;
+    color: white;
+}
+
+.gloginf{
+    color:#EA4335;
+}
+
+.floginf{
+    color: #3b5998;
+}
+.iloginf{
+    color: #d62976 ;
+}
