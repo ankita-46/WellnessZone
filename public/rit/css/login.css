@@ -1,0 +1,85 @@
+body{
+    background-color: #F7F7F7;
+    text-align: center;
+    font-family: 'Montserrat';
+  }
+  
+  .mainContent::before {
+    content: "";
+    background: url("./../../images/medical.webp") center center / cover no-repeat fixed;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    height: 100vh;
+    width: 100%;
+    z-index: -1;
+    opacity: 0.4;
+  }
+  .social-icon{
+    margin: 1px 5px 6px;
+  
+  }
+  
+  .social-icon:hover{
+    color: #dd5353;
+    cursor: pointer;
+  }
+  
+  
+  .mainContent{
+    padding: 2% 10%;
+    width: 100%;
+    margin-top: 80px;
+    height: 100%;
+  }
+  
+  .signupdiv{
+    /* background-color: #FF7D7D; */
+    border-radius: 15px;
+    padding: 10% 5%;
+    color: white;
+  }
+  
+  .logindiv{
+    margin-bottom: 30px;
+    padding-top: 40px;
+    border: 0.5px solid;
+    border-radius: 10px;
+    padding: 5%;
+  }
+  
+  .btn2 {
+    margin: 20px auto;
+    position: relative;
+    left: 28px;
+    font-size: 18px;  
+  }
+  .forgot{
+    text-decoration: underline;
+    position: relative;
+    left: 6px;
+    margin-top: 10px;
+    top: 7px;
+  }
+  .forgot:hover{
+    color:#dd5353;
+  }
+
+  .btn1 {
+    font-weight: bold;
+    font-size: 18px;
+    border-radius: 69px;
+    color: white;
+    background: rgb(212, 18, 117);
+    background: linear-gradient(295deg, rgba(212, 18, 117, 1) 0%, rgba(218, 80, 6, 1) 100%, rgba(215, 68, 0, 1) 100%);
+    padding: 0px 50px;
+    cursor: pointer;
+    transition: all 0.1s ease-in-out;
+    border:none;
+  }
+  
+  .btn1:hover {
+    background-color: rgb(229, 74, 97);
+    transition: all 0.1s ease-in-out;
+    scale: 1.1;
+  }
