@@ -16,7 +16,7 @@ app.set("view engine", "hbs");
 app.set("views", template_path);
 app.listen(port, () => {
     console.log(`server is running at port no ${port}`);
-  });
+});
 
 const cookieparser = require('cookie-parser');
 app.use(cookieparser());
