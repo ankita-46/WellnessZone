@@ -19,7 +19,7 @@ const userSchema = mongoose.Schema({
     password:{
         type:String,
         required:true,
-        minlength:8
+        // minlength:8
     },
     confirmpassword:{
         type:String,
@@ -27,7 +27,7 @@ const userSchema = mongoose.Schema({
         validate:function(){
             return this.confirmpassword==this.password;
         },
-        minlength:8
+        // minlength:8
     },
     role:{
         type:String,

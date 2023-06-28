@@ -1,15 +1,17 @@
 const  express = require('express');
 const userRouter = express.Router();
-const {getUser,getAllUser,updateUser,deleteUser,getUserByAdmin}=require('../controller/userController');
+const {getsignuppage,getloginpage,getUser,getAllUser,updateUser,deleteUser,getUserByAdmin}=require('../controller/userController');
 const {signup,login,protectRoute,isAuthorised,resetpassword,forgetpassword,logout}=require('../controller/authController');
 
 //user options
 userRouter
 .route('/signup')
+.get(getsignuppage)
 .post(signup)
 
 userRouter
 .route('/login')
+.get(getloginpage)
 .post(login)
 
 userRouter

@@ -3,29 +3,45 @@ const userModel = require('../models/userModel');
 const jwt = require('jsonwebtoken');
 const jwt_key = require('../secrets');
 const { sendmail } = require('./helper');
-const sendmail = require('./helper');
 
 //signup function
 module.exports.signup=async function signup(req, res) {
     try{
         let dataobj = req.body;
-        let user = await userModel.create(dataobj);
-        if(user)
+        let email = dataobj.email;
+        let password = dataobj.password;
+        let confirmpassword = dataobj.confirmpassword;
+        if(password===confirmpassword)
         {
-            res.json({
-                message: "user signed up",
-                data: user
-            });
+            let checkuser = await userModel.findOne({email:email});
+            if(checkuser)
+            {
+                return res.render("signup",{
+                    message:"this email already exists login please"
+                })
+            }
+            let user = await userModel.create(dataobj);
+            if(user)
+            {
+                res.render('login');
+                console.log(user);
+            }
+            else{
+                res.render("signup",{
+                    message:"error while signing in"
+                })
+            }
         }
-        else{
-            res.json({
-                message:"error while signing in"
+        else
+        {
+            res.render("signup",{
+                message: "password and confirm password are not matching"
             })
         }
     }
     catch(err)
     {
-        res.json({
+        res.render("signup",{
             message:err.message
         })
     }
@@ -39,37 +55,34 @@ module.exports.login= async function login(req, res) {
             let user = await userModel.findOne({ email: data.email });
             if (user) {
                 //user bcrypt compare function
-                if (user.password == data.password) {
+                if (user.password === data.password) {
                     let uid = user['_id'];
                     let token = jwt.sign({payload:uid},jwt_key);
                     res.cookie('isloggedin',token,{httpOnly:true});
-                    res.json({
-                        message: "user has logged in",
-                        userdetails: user
-                    })
+                    res.render('homepage')
+                    console.log(user);
                 }
                 else {
-                    res.json({
+                    res.render('login',{
                         message: "wrong credentials"
                     });
                 }
             }
             else {
-                res.json({
+                res.render('login',{
                     message: "user not found"
                 })
             }
         }
         else{
-            res.json({
+            res.render('login',{
                 message:"no email entered"
             });
         }
     }
     catch (err) {
-        res.statue(500).json({
-            message: "error is thrown",
-            error: err.message
+        res.statue(500).render('login',{
+            message: err.message
         });
     }
 }

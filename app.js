@@ -22,6 +22,10 @@ const cookieparser = require('cookie-parser');
 app.use(cookieparser());
 app.use(express.json());
 
+app.get("/",(req,res)=>{
+    res.render('homepage');
+})
+
 //mini app
 const userRouter = require('./Routers/userRouter');
 const articleRouter = require('./Routers/articleRouter');

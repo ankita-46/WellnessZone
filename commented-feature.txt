@@ -1,0 +1,6 @@
+these features will be implemented further but not now to easily work with the site
+features that are commented now are -
+1. bcrypt
+2. username
+3. password length bound
+4. email verification at the time of signup

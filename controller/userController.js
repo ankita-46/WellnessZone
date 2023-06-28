@@ -1,5 +1,14 @@
 const userModel = require('../models/userModel');
 
+
+module.exports.getsignuppage= async function getUser(req,res){
+    res.render('signup');
+}
+
+module.exports.getloginpage= async function getUser(req,res){
+    res.render('login');
+}
+
 module.exports.getUser= async function getUser(req,res){
     try{
         let id = req.id;
