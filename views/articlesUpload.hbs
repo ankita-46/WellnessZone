@@ -7,6 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>WellnessZone - HOME</title>
     <link rel="stylesheet" href="/css/homepage.css" />
+    <link rel="stylesheet" href="/css/postlogin.css" />
+    <link rel="stylesheet" href="/css/articlesUpload.css">
     <script
       src="https://kit.fontawesome.com/9542957272.js"
       crossorigin="anonymous"
@@ -19,30 +21,52 @@
         <span>WellnessZone</span>
       </div>
       <div class="container">
-        <a href="#">
-          <span>Counsellor</span>
-        </a>
-        <a href="#">
-          <span>Admin</span>
-        </a>
-        <a href="#">
-          <span>Consumer</span>
-        </a>
-        <a href="#">
-          <span>Support</span>
-        </a>
+        <div class="search">
+      <input id="search_article" type="text" placeholder="Search Articles"  onkeyup="searchfun()">
+    </div>
+    <button class="search_btn">Search</button>
       </div>
-      <a href="/user/login">
-        <div class="login">Login</div>
+      <div class="container1">
+      <a href="" style="pointer-events: none;">
+        <a href="/user/getuploadArticle">
+            <button class="button">
+                <span>Upload Article</span>
+            </button>
+        </a>
+        <a href="#">
+            <button class="button">
+                <span>Chat</span>
+            </button>
+        </a>
+        <a href="/user/profileShow">
+            <button class="button">
+                <span>Profile</span>
+        </button>
+        </a>
+        <a href="/user/logout">
+        <div class="login">SignOut</div>
+        </a>
       </a>
     </div>
+    </div>
     <section class="info">
-      <div class="write">
-        <h1>FIND YOUR TREATMENT.</h1>
-        <a href="/user/signup">
-          <button class="btn">Create Account</button>
-        </a>
-      </div>
+      <div class="articleform">
+        <h1>Upload Article</h1>
+        <form action="/article/createArticle" method="POST" enctype="multipart/form-data">
+            <input type="text" class="input" name="heading" placeholder="Subject of Article">
+            <textarea name="discription" style="overflow:auto" class="input" id="" cols="30" rows="9" placeholder="Description"></textarea>
+            <input type="text" class="input" name="tags" placeholder="Enter tags for search filter">
+            <div class="input image"><span>Add a picture: </span><input type="file" name="image" accept="image/*" style="width: 174px;"></div>
+            <div >
+              <div style="width: 376px; margin: auto">
+                Note:<br>
+              1. Add space between different tags to use in tag input.<br>
+              2. Your article will be sent for review to counsellors.
+              </div>
+            </div>
+            <button type="submit" value="submit" class="input" id="btn">Upload</button>
+        </form>
+    </div>
     </section>
     <div class="review">
       <div class="box2">

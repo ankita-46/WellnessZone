@@ -143,3 +143,11 @@ module.exports.getUserByAdmin=async function getUserByAdmin(req,res)
         })
     }
 }
+
+module.exports.getuploadArticle = async (req, res)=>{
+    res.render('articlesUpload');
+}
+
+module.exports.profileShow = async (req, res)=>{
+    res.render('user-profile');
+}

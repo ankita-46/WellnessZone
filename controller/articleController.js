@@ -57,20 +57,20 @@ module.exports.getArticle = async function getArticle(req,res)
 module.exports.createArticle = async function createArticle(req,res)
 {
     try{
-        let data = req.body;
+        let { heading, discription, tags } = req.body;
         let userid = req.id;
         let articleobj = {
-            heading:data.heading,
-            discription:data.discription,
-            user:userid
-        }
+            heading,
+            discription,
+            tags,
+            articleImage:  req.file.path, // Access uploaded file using req.file
+            user: userid
+          };
+        // console.log(articleobj);
         let article = await adminarticlesModel.create(articleobj);
         if(article)
         {
-            res.json({
-                message:"atricle gone for review",
-                article:article
-            })
+            res.render('postlogin');
         }
         else 
         {

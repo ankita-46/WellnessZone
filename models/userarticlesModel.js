@@ -9,9 +9,13 @@ const userarticleSchema = mongoose.Schema({
         type:String,
         required:true,
     },
+    tags:{
+        type:String,
+        require: true,
+    },
     articleImage:{
         type:String,
-        default:'img/article/default.jpeg'
+        require: false,
     },
     user:{
         type:mongoose.Schema.ObjectId,
