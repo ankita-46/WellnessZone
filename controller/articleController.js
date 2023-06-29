@@ -62,7 +62,7 @@ module.exports.createArticle = async function createArticle(req,res)
         let articleobj = {
             heading,
             discription,
-            tags,
+            tags: tags.toLowerCase(),
             articleImage:  req.file.path, // Access uploaded file using req.file
             user: userid
           };
