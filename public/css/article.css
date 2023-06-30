@@ -13,7 +13,7 @@
   -webkit-backdrop-filter: blur(5.8px);
   border: 1px solid #fafafa;
   width: 100%;
-  max-width: 800px;
+  max-width: 1000px;
 }
 .body {
   text-align: center;
@@ -32,8 +32,9 @@
   font-weight: bold;
 }
 .article_para {
-    margin-left: 15px;
-    margin-right: 15px;
+  text-align: justify;
+  margin-left: 15px;
+  margin-right: 15px;
   text-align: initial;
   font-size: 20px;
   line-height: 32px;
