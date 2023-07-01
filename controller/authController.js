@@ -23,7 +23,7 @@ module.exports.signup=async function signup(req, res) {
             let user = await userModel.create(dataobj);
             if(user)
             {
-                res.render('postlogin');
+                res.redirect("/user/login");
                 console.log(user);
             }
             else{
@@ -59,8 +59,7 @@ module.exports.login= async function login(req, res) {
                     let uid = user['_id'];
                     let token = jwt.sign({payload:uid},jwt_key);
                     res.cookie('isloggedin',token,{httpOnly:true});
-                    res.render('postlogin')
-                    console.log(user);
+                    res.redirect("/user/home");
                 }
                 else {
                     res.render('login',{
@@ -202,4 +201,11 @@ module.exports.logout = function logout(req,res)
 {
     res.cookie('isloggedin','',{maxAge:1});
     res.redirect('/');
+}
+
+module.exports.home = async (req, res)=>{
+    if(req.user.role==='admin')
+    res.render('postlogin', {isAdmin: 'true'});
+    else
+    res.render('postlogin', {isAdmin: 'false'});
 }

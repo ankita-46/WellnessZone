@@ -5,19 +5,12 @@ module.exports.getArticles = async function getArticles(req,res)
 {
     try{
         let articles = await adminarticlesModel.find();
-        if(articles.length)
-        {
-            res.json({
-                message:"data retrieved",
-                articles:articles
-            })
-        }
-        else 
-        {
-            res.json({
-                message:"articles not found"
-            })
-        }
+        let isAdmin;
+        if(req.user.role==='admin')
+        isAdmin='true';
+        else
+        isAdmin='false';
+        res.render('reviewArticles', {isAdmin, articles});
     }
     catch(err)
     {

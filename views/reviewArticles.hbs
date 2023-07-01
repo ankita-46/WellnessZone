@@ -57,19 +57,21 @@
     </div>
     </div>
     <section class="info">
+      {{#each articles}}
       <form class="write" action="" method="post" id="articleclick">
-        <input type="hidden">
+        <input type="hidden" value="{{this._id}}">
         <div class="heading">
           <div class="subjectauthor">
-            <h2 class="subject"> Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quia, voluptatem nihil! Explicabo error laborum reprehenderit ab beatae, necessitatibus itaque aperiam?This is the heading of the article</h2>
-            <p class="author">By Priyanshu singh on 30-06-2023</p>
+            <h2 class="subject">{{this.heading}}</h2>
+            <p class="author">By {{this.user}} on {{this.date}}</p>
           </div>
           <div class="pic">
-            <img src="/images/image.png" alt="Logo" />
+            <img src="\\{{this.articleImage}}" alt="Logo" />
           </div>
         </div>
-        <p class="article">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Natus delectus, quae sint ex error, at earum laboriosam tenetur ab fugit eius alias blanditiis assumenda modi laborum veniam dolore facere vero dolor obcaecati vitae totam quod. Possimus in aliquam distinctio explicabo, sapiente dolorem pariatur voluptatum consequuntur cum quam ipsa quidem commodi voluptatem, fugit, amet provident veritatis maiores adipisci ut quis nulla alias optio repellat! Ratione illum officiis, dolorem veniam aliquam obcaecati impedit esse nesciunt maxime laboriosam odit quisquam iusto dolores quidem dolor? Sit facilis corrupti esse natus exercitationem impedit necessitatibus, modi nihil suscipit sint, vel, doloribus itaque ipsum eveniet vero sequi? . . . . . . . .</p>    
+        <p class="article" id="articlespara{{@index}}">{{this.discription}}</p>    
       </form>
+      {{/each}}
     </section>
     <div class="review">
       <div class="box2">

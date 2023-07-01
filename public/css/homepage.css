@@ -136,7 +136,7 @@ a {
 }
 
 .info {
-  height: 100vh;
+  min-height: 100vh;
   color: #f9f9f9;
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   display: flex;
