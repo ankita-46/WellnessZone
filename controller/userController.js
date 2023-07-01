@@ -143,3 +143,14 @@ module.exports.getUserByAdmin=async function getUserByAdmin(req,res)
         })
     }
 }
+
+module.exports.getuploadArticle = async (req, res)=>{
+    if(req.user.role==='admin')
+    res.render('articlesUpload', {isAdmin: 'true'});
+    else
+    res.render('articlesUpload', {isAdmin: 'false'});
+}
+
+module.exports.profileShow = async (req, res)=>{
+    res.render('user-profile');
+}

@@ -1,0 +1,75 @@
+body{
+    background-color: #1a1a1a;
+    color: #fff;
+    font-family: 'Montserrat';
+    background: url("../images/medical.webp") center center / cover no-repeat
+    fixed;
+}
+
+#form-container{
+    border: 1px solid #fafafa;
+    backdrop-filter: blur(5.8px);
+    width: 90%;
+    max-width: 600px;
+    border-radius: 10px;
+    background: rgba(0, 61, 65, 0.54);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+
+#form__container__header {
+    border: 1px solid #fafafa;
+    backdrop-filter: blur(5.8px);
+    border-radius: 10px 10px 0 0;
+    padding: 30px;
+    text-align: center;
+    background: rgba(0, 61, 65, 0.54);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    margin: 0;
+    font-size: 18px;
+    font-size: 300;
+    line-height: 0;
+  }
+
+  #form__content__wrapper{
+    padding: 20px;
+}
+
+input {
+    box-sizing: border-box;
+    color: #fff;
+    border: 1px solid #fafafa;
+    backdrop-filter: blur(5.8px);
+    width: 100%;
+    margin: 0;
+    border: none;
+    border-radius: 5px;
+    padding: 16px 20px;
+    font-size: 15px;
+    background: rgba(0, 61, 65, 0.54);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    margin-top: 32px;
+  }
+ 
+ 
+  input[type='submit'] {
+    background: rgb(212, 18, 117);;
+ 
+  }
+  .id{
+    font-size: 20px;
+    
+  }
+  .msg{
+    font-size: 30px;
+    padding-top: 15px;
+  }
+  .btn:hover {
+    background-color: rgb(229, 74, 97);
+    transition: all 0.1s ease-in-out;
+    scale: 1.025;
+  }

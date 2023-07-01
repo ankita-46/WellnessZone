@@ -6,7 +6,7 @@ body{
   
   .mainContent::before {
     content: "";
-    background: url("./../../images/medical.webp") center center / cover no-repeat fixed;
+    background: url("/images/medical.webp") center center / cover no-repeat fixed;
     position: absolute;
     top: 0px;
     left: 0px;

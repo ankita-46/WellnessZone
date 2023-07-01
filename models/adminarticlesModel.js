@@ -9,9 +9,13 @@ const aarticleSchema = mongoose.Schema({
         type:String,
         required:true,
     },
+    tags:{
+        type:String,
+        require: true,
+    },
     articleImage:{
         type:String,
-        default:'img/article/default.jpeg'
+        require: false,
     },
     user:{
         type:mongoose.Schema.ObjectId,
@@ -23,7 +27,11 @@ const aarticleSchema = mongoose.Schema({
         default:Date.now()
     }
 });
-
+aarticleSchema.pre(/^find/,function(next)
+{
+    this.populate("user");
+    next();
+})
 const adminarticlesModel = mongoose.model('adminarticlesModel',aarticleSchema);
 
 module.exports = adminarticlesModel;

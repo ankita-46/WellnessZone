@@ -64,6 +64,11 @@ a {
   width: 45px;
   margin-top: 4px;
   max-height: 70px;
+  text-decoration: none;
+}
+
+.logo:hover{
+  color: white;
 }
 
 .logo img {
@@ -87,7 +92,7 @@ a {
   display: flex;
   flex-flow: row nowrap;
   height: 100%;
-  justify-content: flex-end;
+  /* justify-content: flex-end; */
   margin: 0px;
   padding: 0px;
   position: relative;
@@ -136,7 +141,7 @@ a {
 }
 
 .info {
-  height: 100vh;
+  min-height: 100vh;
   color: #f9f9f9;
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   display: flex;
@@ -146,7 +151,7 @@ a {
 
 .info::before {
   content: "";
-  background: url("./images/medical.webp") center center / cover no-repeat fixed;
+  background: url("/images/medical.webp") center center / cover no-repeat fixed;
   position: absolute;
   top: 0px;
   left: 0px;

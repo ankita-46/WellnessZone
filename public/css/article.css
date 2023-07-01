@@ -1,0 +1,108 @@
+@import url("https://fonts.googleapis.com/css2?family=Baloo+Bhai+2&display=swap");
+.forgotpasswordform11 {
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+}
+.article {
+  /* From https://css.glass */
+  background: rgba(0, 61, 65, 0.54);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(5.8px);
+  -webkit-backdrop-filter: blur(5.8px);
+  border: 1px solid #fafafa;
+  width: 100%;
+  max-width: 1000px;
+  padding: 10px;
+}
+.body {
+  text-align: center;
+}
+
+.forgotpasswordform1 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.forgotpasswordform1:before {
+  background: url("../images/medical.webp") center center / cover no-repeat
+    fixed;
+}
+.article_title {
+  font-weight: bold;
+}
+.article_para {
+  margin-left: 15px;
+  margin-right: 15px;
+  text-align: initial;
+  font-size: 20px;
+  line-height: 32px;
+  letter-spacing: -0.003em;
+  line-height: 32px;
+  font-family: "Baloo Bhai 2", cursive;
+  text-align: justify;
+}
+
+.mainContent {
+  padding: 2% 10%;
+  width: 100%;
+  margin-top: 0px;
+  height: 100%;
+}
+
+.article_image {
+  width: 80%;
+  height: auto;
+  margin-bottom: 50px;
+}
+.article_des {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.author_name {
+  margin-left: 10px;
+  font-weight: 700;
+}
+.dateandtime {
+  margin-right: 10px;
+  font-weight: 700;
+}
+
+.page{
+  margin-top: 100px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.options{
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.reviewform{
+  display: inline;
+  margin: 0px 20px;
+}
+
+.reviewbtn{
+  width: 300px;
+  height: 40px;
+  border-radius: 20px;
+}
+
+.reviewbtn:hover{
+  transform:scale(1.025,1.025);
+  -webkit-transform:scale(1.025,1.025);
+  -moz-transform:scale(1.025,1.025);
+}
+
+#accept{
+  background-color: green;
+}
+
+#reject{
+  background-color: red;
+}

@@ -3,7 +3,7 @@ const adminRouter = express.Router();
 const {getAllUser,deleteUser,getUserByAdmin}=require('../controller/userController');
 const {protectRoute,isAuthorised}=require('../controller/authController');
 const {getAllArticles,getArticle,deleteArticle} = require('../controller/articleController');
-const {getArticles,uploadArticle,delArticle} = require('../controller/adminController');
+const {getArticles,getSingleArticles,uploadArticle,delArticle,searchReviewArticle} = require('../controller/adminController');
 
 
 //admin specific function
@@ -12,6 +12,14 @@ adminRouter.use(isAuthorised(['admin']));
 adminRouter
 .route('/getAllUser')
 .get(getAllUser)
+
+adminRouter
+.route('/getSingleArticles')
+.post(getSingleArticles)
+
+adminRouter
+.route('/searchreview')
+.post(searchReviewArticle)
 
 adminRouter
 .route('/getuser/:id')
@@ -25,7 +33,10 @@ adminRouter
 adminRouter
 .route('/reviewarticles/:id')
 .post(uploadArticle)
-.delete(delArticle)
+
+adminRouter
+.route('/deletearticles/:id')
+.post(delArticle)
 
 adminRouter
 .route('/articles')

@@ -1,23 +1,17 @@
 const userarticlesModel = require('../models/userarticlesModel');
 const adminarticlesModel = require('../models/adminarticlesModel');
+const userModel = require('../models/userModel');
 
 module.exports.getArticles = async function getArticles(req,res)
 {
     try{
         let articles = await adminarticlesModel.find();
-        if(articles.length)
-        {
-            res.json({
-                message:"data retrieved",
-                articles:articles
-            })
-        }
-        else 
-        {
-            res.json({
-                message:"articles not found"
-            })
-        }
+        let isAdmin;
+        if(req.user.role==='admin')
+        isAdmin='true';
+        else
+        isAdmin='false';
+        res.render('reviewArticles', {isAdmin, articles});
     }
     catch(err)
     {
@@ -27,6 +21,26 @@ module.exports.getArticles = async function getArticles(req,res)
     }
 }
 
+module.exports.getSingleArticles = async function getArticles(req,res)
+{
+    try{
+        let adminArticle = await adminarticlesModel.findById(req.body.articleid);
+        let isAdmin;
+        if(req.user.role==='admin')
+        isAdmin='true';
+        else
+        isAdmin='false';
+        res.render('article', {isAdmin, adminArticle});
+    }
+    catch(err)
+    {
+        res.json({
+            message:err.message
+        })
+    }
+}
+
+
 module.exports.uploadArticle = async function uploadArticle(req,res)
 {
     try{
@@ -34,11 +48,15 @@ module.exports.uploadArticle = async function uploadArticle(req,res)
         let article = await adminarticlesModel.findByIdAndDelete(id);
         if(article)
         {
-            let savedarticle = await userarticlesModel.create(article);
-            res.json({
-                message:"article saved",
-                article:savedarticle
-            })
+            let articleobj = {
+                heading: article.heading,
+                discription: article.discription,
+                tags: article.tags,
+                articleImage: article.articleImage,
+                user: article.user
+            }
+            let save = await userarticlesModel.create(articleobj);
+            res.redirect("/admin/reviewarticles");
         }
         else 
         {
@@ -63,10 +81,7 @@ module.exports.delArticle = async function delArticle(req,res)
         let article = await adminarticlesModel.findByIdAndDelete(id);
         if(article)
         {
-            res.json({
-                message:"article deleted",
-                article:article
-            })
+            res.redirect("/admin/reviewarticles");
         }
         else 
         {
@@ -81,4 +96,16 @@ module.exports.delArticle = async function delArticle(req,res)
             message:err.message
         })
     }
+}
+
+module.exports.searchReviewArticle = async (req, res)=>{
+    var word = req.body.searchfield.toLowerCase();
+    const regex = new RegExp(word, "i");
+    let articles = await adminarticlesModel.find({ tags: { $regex: regex } });
+    let isAdmin;
+    if(req.user.role==='admin')
+    isAdmin='true';
+    else
+    isAdmin='false';
+    res.render('reviewArticles', {isAdmin, articles});
 }

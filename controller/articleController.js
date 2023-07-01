@@ -34,10 +34,12 @@ module.exports.getArticle = async function getArticle(req,res)
         let article = await userarticlesModel.findById(id);
         if(article)
         {
-            res.json({
-                message:"data retrieved",
-                article:article
-            })
+            let isAdmin;
+            if(req.user.role==='admin')
+            isAdmin='true';
+            else
+            isAdmin='false';
+            res.render('userarticle', {isAdmin, article});
         }
         else 
         {
@@ -57,20 +59,20 @@ module.exports.getArticle = async function getArticle(req,res)
 module.exports.createArticle = async function createArticle(req,res)
 {
     try{
-        let data = req.body;
+        let { heading, discription, tags } = req.body;
         let userid = req.id;
         let articleobj = {
-            heading:data.heading,
-            discription:data.discription,
-            user:userid
-        }
+            heading,
+            discription,
+            tags: tags.toLowerCase(),
+            articleImage:  req.file.path.substring(7), // Access uploaded file using req.file
+            user: userid
+          };
+        // console.log(articleobj);
         let article = await adminarticlesModel.create(articleobj);
         if(article)
         {
-            res.json({
-                message:"atricle gone for review",
-                article:article
-            })
+            res.redirect("/user/home");
         }
         else 
         {
@@ -140,4 +142,16 @@ module.exports.deleteArticle = async function deleteArticle(req,res)
             message:err.message
         })
     }
+}
+
+module.exports.searchArticle = async (req, res)=>{
+    var word = req.body.searchfield.toLowerCase();
+    const regex = new RegExp(word, "i");
+    let articles = await userarticlesModel.find({ tags: { $regex: regex } });
+    let isAdmin;
+    if(req.user.role==='admin')
+    isAdmin='true';
+    else
+    isAdmin='false';
+    res.render('postlogin', {isAdmin, articles});
 }
