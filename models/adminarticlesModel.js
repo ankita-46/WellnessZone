@@ -27,7 +27,11 @@ const aarticleSchema = mongoose.Schema({
         default:Date.now()
     }
 });
-
+aarticleSchema.pre(/^find/,function(next)
+{
+    this.populate("user");
+    next();
+})
 const adminarticlesModel = mongoose.model('adminarticlesModel',aarticleSchema);
 
 module.exports = adminarticlesModel;

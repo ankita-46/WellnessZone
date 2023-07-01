@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <link rel="icon" href="/images/titlelogo.png">
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>WellnessZone - HOME</title>
+    <title>Upload Article</title>
     <link rel="stylesheet" href="/css/homepage.css" />
     <link rel="stylesheet" href="/css/postlogin.css" />
     <link rel="stylesheet" href="/css/articlesUpload.css">
@@ -13,38 +13,45 @@
       src="https://kit.fontawesome.com/9542957272.js"
       crossorigin="anonymous"
     ></script>
+    <script src="/js/articlesclick.js"></script>
   </head>
   <body>
     <div class="box">
-      <div class="logo">
+      <a href="/user/home" class="logo">
         <img src="/images/image.png" alt="Logo" />
         <span>WellnessZone</span>
+      </a>
+      <form class="container" action="/article/searcharticle" method="POST">
+      <div class="search">
+        <input id="search_article" type="text" placeholder="Search Articles" onkeyup="searchfun()" name="searchfield">
       </div>
-      <div class="container">
-        <div class="search">
-      <input id="search_article" type="text" placeholder="Search Articles"  onkeyup="searchfun()">
-    </div>
-    <button class="search_btn">Search</button>
-      </div>
+      <button class="search_btn" type="submit" value="submit">Search</button>
+    </form>
       <div class="container1">
       <a href="" style="pointer-events: none;">
+        <p style="display:none" id="disablingbtn">{{isAdmin}}</p>
+        <a href="/admin/reviewarticles" id="reviewbtn">
+          <button class="button">
+            <span>Review Article</span>
+          </button>
+        </a>
         <a href="/user/getuploadArticle">
-            <button class="button">
-                <span>Upload Article</span>
-            </button>
+          <button class="button">
+            <span>Upload Article</span>
+          </button>
         </a>
         <a href="#">
-            <button class="button">
-                <span>Chat</span>
-            </button>
+          <button class="button">
+            <span>Chat</span>
+          </button>
         </a>
         <a href="/user/profileShow">
-            <button class="button">
-                <span>Profile</span>
-        </button>
+          <button class="button">
+            <span>Profile</span>
+          </button>
         </a>
         <a href="/user/logout">
-        <div class="login">SignOut</div>
+          <div class="login">SignOut</div>
         </a>
       </a>
     </div>
@@ -162,4 +169,5 @@
       </div>
     </div>
   </body>
+  <script src="/js/articlesclick.js"></script>
 </html>

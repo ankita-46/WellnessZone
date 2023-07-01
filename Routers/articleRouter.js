@@ -1,6 +1,6 @@
 const  express = require('express');
 const { protectRoute } = require('../controller/authController');
-const {getAllArticles,getArticle,createArticle,updateArticle,deleteArticle} = require('../controller/articleController');
+const {getAllArticles,getArticle,createArticle,updateArticle,deleteArticle,searchArticle} = require('../controller/articleController');
 const articleRouter = express.Router();
 const multer  = require('multer');
 
@@ -31,14 +31,18 @@ articleRouter
 .route('/all')
 .get(getAllArticles)
 
-articleRouter
-.route('/:id')
-.get(getArticle)
-
 articleRouter.use(protectRoute)
 articleRouter
 .route('/createArticle')
 .post(upload.single("image"), createArticle)
+
+articleRouter
+.route('/searcharticle')
+.post(searchArticle)
+
+articleRouter
+.route('/:id')
+.post(getArticle)
 
 articleRouter
 .route('/:id')

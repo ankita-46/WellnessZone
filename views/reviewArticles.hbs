@@ -17,16 +17,16 @@
   </head>
   <body>
     <div class="box">
-      <div class="logo">
+      <a href="/user/home" class="logo">
         <img src="/images/image.png" alt="Logo" />
         <span>WellnessZone</span>
+      </a>
+      <form class="container" method="post" action="/admin/searchreview">
+      <div class="search">
+        <input id="search_article" type="text" placeholder="Search Review Articles" onkeyup="searchfun()" name="searchfield">
       </div>
-      <div class="container">
-        <div class="search">
-      <input id="search_article" type="text" placeholder="Search Articles"  onkeyup="searchfun()">
-    </div>
-    <button class="search_btn">Search</button>
-      </div>
+      <button class="search_btn" type="submit">Search</button>
+    </form>
       <div class="container1">
       <a href="" style="pointer-events: none;">
         <p style="display:none" id="disablingbtn">{{isAdmin}}</p>
@@ -58,12 +58,12 @@
     </div>
     <section class="info">
       {{#each articles}}
-      <form class="write" action="" method="post" id="articleclick">
-        <input type="hidden" value="{{this._id}}">
+      <form class="write" action="/admin/getSingleArticles" method="post" id="articleclick{{@index}}" onclick="submitform({{@index}})">
+        <input type="hidden" value="{{this._id}}" name="articleid">
         <div class="heading">
           <div class="subjectauthor">
             <h2 class="subject">{{this.heading}}</h2>
-            <p class="author">By {{this.user}} on {{this.date}}</p>
+            <p class="author">By {{this.user.name}} on {{this.date}}</p>
           </div>
           <div class="pic">
             <img src="\\{{this.articleImage}}" alt="Logo" />

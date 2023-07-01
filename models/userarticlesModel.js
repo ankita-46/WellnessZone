@@ -27,7 +27,11 @@ const userarticleSchema = mongoose.Schema({
         default:Date.now()
     }
 });
-
+userarticleSchema.pre(/^find/,function(next)
+{
+    this.populate("user");
+    next();
+})
 const userarticlesModel = mongoose.model('userarticlesModel',userarticleSchema);
 
 module.exports = userarticlesModel;

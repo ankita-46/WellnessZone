@@ -71,5 +71,5 @@ input {
   .btn:hover {
     background-color: rgb(229, 74, 97);
     transition: all 0.1s ease-in-out;
-    scale: 1.2;
+    scale: 1.025;
   }

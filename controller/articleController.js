@@ -34,10 +34,12 @@ module.exports.getArticle = async function getArticle(req,res)
         let article = await userarticlesModel.findById(id);
         if(article)
         {
-            res.json({
-                message:"data retrieved",
-                article:article
-            })
+            let isAdmin;
+            if(req.user.role==='admin')
+            isAdmin='true';
+            else
+            isAdmin='false';
+            res.render('userarticle', {isAdmin, article});
         }
         else 
         {
@@ -70,7 +72,7 @@ module.exports.createArticle = async function createArticle(req,res)
         let article = await adminarticlesModel.create(articleobj);
         if(article)
         {
-            res.render('postlogin');
+            res.redirect("/user/home");
         }
         else 
         {
@@ -140,4 +142,16 @@ module.exports.deleteArticle = async function deleteArticle(req,res)
             message:err.message
         })
     }
+}
+
+module.exports.searchArticle = async (req, res)=>{
+    var word = req.body.searchfield.toLowerCase();
+    const regex = new RegExp(word, "i");
+    let articles = await userarticlesModel.find({ tags: { $regex: regex } });
+    let isAdmin;
+    if(req.user.role==='admin')
+    isAdmin='true';
+    else
+    isAdmin='false';
+    res.render('postlogin', {isAdmin, articles});
 }

@@ -1,5 +1,6 @@
 const  express = require('express');
 const userModel = require('../models/userModel');
+const userarticlesModel = require('../models/userarticlesModel');
 const jwt = require('jsonwebtoken');
 const jwt_key = require('../secrets');
 const { sendmail } = require('./helper');
@@ -204,8 +205,9 @@ module.exports.logout = function logout(req,res)
 }
 
 module.exports.home = async (req, res)=>{
+    let articles = await userarticlesModel.find();
     if(req.user.role==='admin')
-    res.render('postlogin', {isAdmin: 'true'});
+    res.render('postlogin', {isAdmin: 'true', articles});
     else
-    res.render('postlogin', {isAdmin: 'false'});
+    res.render('postlogin', {isAdmin: 'false', articles});
 }
