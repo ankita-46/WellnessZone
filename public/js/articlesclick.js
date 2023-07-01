@@ -18,6 +18,5 @@ while(paratext.innerText){
 
 function submitform(index){
     var form = document.getElementById(`articleclick${index}`);
-    console.log("clicked"+index);
     form.submit();
 }

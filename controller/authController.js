@@ -25,7 +25,6 @@ module.exports.signup=async function signup(req, res) {
             if(user)
             {
                 res.redirect("/user/login");
-                console.log(user);
             }
             else{
                 res.render("signup",{
