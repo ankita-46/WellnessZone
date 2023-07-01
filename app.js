@@ -11,6 +11,11 @@ const template_path = path.join(__dirname, "/views");
 app.use(bodyParser.json({ extended: true }));
 app.use(bodyParser.urlencoded({ extended: true }));
 
+//temporary
+const jwt = require('jsonwebtoken');
+const jwt_key = require('./secrets');
+const userModel = require('./models/userModel');
+
 app.use(express.static(static_path));
 app.set("view engine", "hbs");
 app.set("views", template_path);
@@ -22,8 +27,38 @@ const cookieparser = require('cookie-parser');
 app.use(cookieparser());
 app.use(express.json());
 
-app.get("/",(req,res)=>{
-    res.render('homepage');
+app.get("/",async (req,res)=>{
+    try{
+        let token=req.cookies.isloggedin;
+        if(token)
+        {
+            let payload=jwt.verify(token,jwt_key);
+            if(payload)
+            {
+                const user = await userModel.findById(payload.payload);
+                req.role = user.role;
+                req.id = user.id;
+                req.user=user;
+                res.render('postlogin');
+            }
+            else{
+                res.render('homepage',{
+                    message:"user not verified"
+                })
+            }
+        }
+        else{
+            res.render('homepage',{
+                message:"please login again"
+            })
+        }
+    }
+    catch(err)
+    {
+        res.render('homepage',{
+            message:err.message
+        })
+    }
 })
 
 //mini app

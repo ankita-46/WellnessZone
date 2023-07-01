@@ -59,7 +59,7 @@ module.exports.login= async function login(req, res) {
                     let uid = user['_id'];
                     let token = jwt.sign({payload:uid},jwt_key);
                     res.cookie('isloggedin',token,{httpOnly:true});
-                    res.render('homepage')
+                    res.render('postlogin')
                     console.log(user);
                 }
                 else {
