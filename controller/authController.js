@@ -205,8 +205,10 @@ module.exports.logout = function logout(req,res)
 
 module.exports.home = async (req, res)=>{
     let articles = await userarticlesModel.find();
+    let name = req.user.name;
+    // console.log(name);
     if(req.user.role==='admin')
-    res.render('postlogin', {isAdmin: 'true', articles});
+    res.render('postlogin', {isAdmin: 'true', articles,name:name,room:'groupchat'});
     else
-    res.render('postlogin', {isAdmin: 'false', articles});
+    res.render('postlogin', {isAdmin: 'false', articles,name:name,room:'groupchat'});
 }
