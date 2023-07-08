@@ -48,7 +48,7 @@ app.get("/",async (req,res)=>{
                 req.role = user.role;
                 req.id = user.id;
                 req.user=user;
-                res.render('postlogin');
+                res.redirect('/user/home');
             }
             else{
                 res.render('homepage',{
