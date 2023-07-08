@@ -13,17 +13,18 @@ module.exports.addUser = async function addUser ({ id, username, room }) {
     }
 
     // Check for existing user
+
+    //we will implement it later 
+
     const existingUser = await userchatmodel.findOne({name:username,room:room});
     if(existingUser) {
-        return {
-            error: 'Username is in use!'
-        }
+        const deleteduser = await userchatmodel.findOneAndDelete({name:username,room:room})
     }
 
     // Store user
     const user = new userchatmodel({ name:username,id:id, room:room })
     const saveduser = await user.save();
-    return { user:saveduser }
+    return { user:saveduser } 
 }
 
 module.exports.removeUser = async function removeUser (id){

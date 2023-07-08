@@ -32,7 +32,10 @@ app.use(cookieparser());
 app.use(express.json());
 
 app.get("/",(req,res)=>{
-    res.render('homepage');
+    if(req.cookies.isloggedin){
+        res.redirect('/user/home')
+    }
+    else res.render('homepage');
 })
 
 
