@@ -31,11 +31,38 @@ const cookieparser = require('cookie-parser');
 app.use(cookieparser());
 app.use(express.json());
 
-app.get("/",(req,res)=>{
-    if(req.cookies.isloggedin){
-        res.redirect('/user/home')
+app.get("/",async (req,res)=>{
+    try{
+        let token=req.cookies.isloggedin;
+        if(token)
+        {
+            let payload=jwt.verify(token,jwt_key);
+            if(payload)
+            {
+                const user = await userModel.findById(payload.payload);
+                req.role = user.role;
+                req.id = user.id;
+                req.user=user;
+                res.redirect('/user/home');
+            }
+            else{
+                res.render('homepage',{
+                    message:"user not verified"
+                })
+            }
+        }
+        else{
+            res.render('homepage',{
+                message:"please login again"
+            })
+        }
     }
-    else res.render('homepage');
+    catch(err)
+    {
+        res.render('homepage',{
+            message:err.message
+        })
+    }
 })
 
 
