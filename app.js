@@ -5,13 +5,15 @@ const socketio = require('socket.io')
 const Filter = require('bad-words')
 const http = require('http')
 const hbs = require("hbs");
-const jwt = require('jsonwebtoken');
-const jwt_key = require('./secrets');
-const userModel = require('./models/userModel');
 const bodyParser = require("body-parser");
 const nodemailer = require("nodemailer");
 const { generateMessage, generateLocationMessage,addMessage,getAllMessages } = require('./controller/messageController')
 const { addUser, removeUser, getUser, getUsersInRoom } = require('./controller/userChatController')
+
+//temporary
+const jwt = require('jsonwebtoken');
+const jwt_key = require('./secrets');
+const userModel = require('./models/userModel');
 
 const app = express()
 const server = http.createServer(app)
