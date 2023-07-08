@@ -31,13 +31,7 @@ label {
     color: #777;
 }
 
-input {
-    border: 1px solid #eeeeee;
-    padding: 12px;
-    outline: none;
-}
-
-button {
+.btn2 {
     cursor: pointer;
     padding: 12px;
     background: #7C5CBF;
@@ -47,11 +41,11 @@ button {
     transition: background .3s ease;
 }
 
-button:hover {
+.btn2:hover {
     background: #6b47b8;
 }
 
-button:disabled {
+.btn2:disabled {
     cursor: default;
     background: #7c5cbf94;
 }
@@ -100,6 +94,7 @@ button:disabled {
 /* Chat styles */
 
 .chat__main {
+    color:white;
     flex-grow: 1;
     display: flex;
     flex-direction: column;
@@ -129,7 +124,7 @@ button:disabled {
 }
 
 .message__meta {
-    color: #777;
+    color: #dddcdc;
     font-size: 14px;
 }
 
@@ -184,4 +179,16 @@ button:disabled {
     list-style-type: none;
     font-weight: 300;
     padding: 12px 24px 0 24px;
+}
+
+#send-button{
+    width: 8%;
+}
+
+#send-location{
+    width: 13%;
+}
+
+#send-button:hover , #send-location:hover{
+    cursor: pointer;
 }
